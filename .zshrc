@@ -1,3 +1,4 @@
+# This file downloaded from https://raw.githubusercontent.com/ArcherGodson/env/master/.zshrc
 HISTFILE=~/.histfile
 HISTSIZE=8000
 SAVEHIST=8000
