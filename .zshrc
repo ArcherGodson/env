@@ -10,8 +10,8 @@ compinit
 
 autoload -U promptinit
 promptinit
-PROMPT=$'%{\e[1;32m%}[%{\e[1;34m%}%~%{\e[1;32m%}] %{\e[1;31m%}%#%{\e[0m%} '
-RPROMPT=$'%{\e[1;32m%}[%{\e[33m%}%n@%M%{\e[32m%}]%{\e[0m%} %{\e[1;7m%} %{\e[48m%}%T %{\e[0m%}'
+PROMPT=$' %{\e[1;34m%}%~ %{\e[1;31m%}%#%{\e[0m%} '
+RPROMPT=$'%{\e[1;33m%}%n@%M%{\e[0m%} %{\e[1;7m%} %{\e[48m%}%T %{\e[0m%}'
 
 precmd()
 {
