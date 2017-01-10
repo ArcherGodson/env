@@ -1,4 +1,5 @@
 # This file downloaded from https://raw.githubusercontent.com/ArcherGodson/env/master/.zshrc
+# You can use `curl -L https://raw.githubusercontent.com/ArcherGodson/env/master/.zshrc > /etc/zsh/zshrc`
 HISTFILE=~/.histfile
 HISTSIZE=8000
 SAVEHIST=8000
