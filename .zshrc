@@ -21,7 +21,7 @@ precmd()
 	*xterm*|rxvt|(dt|k|E)term*) print -Pn "\e]2;[%~] :: %n@%m\a"
 	;;
     esac
-    string=" $(whoami)@$(hostname) "
+    string="$(whoami)@$(hostname)"
     columns=$(expr $COLUMNS - $(echo "$string" | wc -c))
     printf " %.0s" {1..$columns}
     echo -e "\e[1;33m$string\e0"
