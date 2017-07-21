@@ -1,5 +1,6 @@
 # This file downloaded from https://raw.githubusercontent.com/ArcherGodson/env/master/.zshrc
 # You can use `curl -L https://raw.githubusercontent.com/ArcherGodson/env/master/.zshrc > /etc/zsh/zshrc`
+# Also can use `wget -O - https://raw.githubusercontent.com/ArcherGodson/env/master/.zshrc > /etc/zsh/zshrc`
 HISTFILE=~/.histfile
 HISTSIZE=8000
 SAVEHIST=8000
@@ -12,7 +13,7 @@ compinit
 autoload -U promptinit
 promptinit
 PROMPT=$' %{\e[1;34m%}%~ %{\e[1;31m%}%#%{\e[0m%} '
-RPROMPT=$'%{\e[1;30;47m%} %T %{\e[0m%}'
+RPROMPT=$'%{\e[1;30;47m%} %* %{\e[0m%}'
 
 precmd()
 {
