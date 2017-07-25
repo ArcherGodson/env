@@ -24,7 +24,7 @@ precmd()
     esac
     string="$(whoami)@$(hostname)"
     columns=$(expr $COLUMNS - $(echo "$string" | wc -c))
-    printf " %.0s" {0..$columns}
+    printf " %.0s" {1..$columns}
     echo -e "\e[1;33m$string\e0"
 }
 preexec() {
