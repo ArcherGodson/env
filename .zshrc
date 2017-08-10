@@ -22,10 +22,12 @@ precmd()
 	*xterm*|rxvt|(dt|k|E)term*) print -Pn "\e]2;[%~] :: %n@%m\a"
 	;;
     esac
+    screen="$(echo $STY | sed 's/^[0-9]*\.//')"
+    if [ ! -z $screen ]; then screenc="\e[1m[$screen]\e0"; fi
     string="$(whoami)@$(hostname)"
-    columns=$(expr $COLUMNS - $(echo "$string" | wc -c))
+    columns=$(expr $COLUMNS - $(echo "$string" | wc -c) - $(echo "$screen" | wc -c))
     printf " %.0s" {1..$columns}
-    echo -e "\e[1;33m$string\e0"
+    echo -e "$screenc \e[1;33m$string\e0"
 }
 preexec() {
     [[ -t 1 ]] || return
