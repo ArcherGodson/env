@@ -25,7 +25,7 @@ precmd()
     screen="$(echo $STY | sed 's/^[0-9]*\.//')"
     if [ ! -z $screen ]; then screenc="\e[1m[$screen]\e0"; fi
     string="$(whoami)@$(hostname)"
-    columns=$(expr $COLUMNS - $(echo "$string" | wc -c) - $(echo "$screen" | wc -c))
+    columns=$(expr $COLUMNS - $(echo "$string" | wc -c) - $(echo "[$screen]" | wc -c))
     printf " %.0s" {1..$columns}
     echo -e "$screenc \e[1;33m$string\e0"
 }
