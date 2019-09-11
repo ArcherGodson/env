@@ -6,6 +6,7 @@ HISTSIZE=8000
 SAVEHIST=8000
 bindkey -e
 zstyle :compinstall filename '~/.zshrc'
+zstyle ':completion:*' rehash true
 
 autoload -Uz compinit
 compinit
