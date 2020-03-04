@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cp ./.* ~/
+rsync -av --progress ./ ~/ --exclude .git
