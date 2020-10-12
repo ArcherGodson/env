@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-rsync -av --progress ./ ~/ --exclude .git --exclude deploy.sh
+rsync -av --progress $(dir $0) ~/ --exclude .git --exclude deploy.sh
