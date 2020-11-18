@@ -9,7 +9,7 @@ zstyle :compinstall filename '~/.zshrc'
 zstyle ':completion:*' rehash true
 
 autoload -Uz compinit
-compinit
+compinit -i
 
 autoload -U promptinit
 promptinit
