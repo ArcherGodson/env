@@ -52,6 +52,17 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias ccze='ccze -m ansi'
 alias google='~/tools/google.sh'
+alias id_system='echo "System identification"; (
+COL1=20
+COL2=40
+HL="\033[1m"
+NORM="\033[0m"
+nets="${HL}Networks:${NORM}\n";
+nets=$nets$(printf "%$(( ${COL1}+${COL2} ))s\n" $(ip a sh | grep -vE "127\.|::1/128" | grep inet | sed "s/^.*inet[^ ]*[ ]//;s/[ ].*$//"))
+echo "$nets"&;
+printf "${HL}%-${COL1}s${NORM}%${COL2}s\n" "HOSTNAME:" "$(hostname -f)"&;
+printf "${HL}%-${COL1}s${NORM}%${COL2}s\n" "External IP:" "$(curl -s ifconfig.me)";
+)'
 
 case $TERM in
 linux)
