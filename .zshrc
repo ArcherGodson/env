@@ -57,6 +57,8 @@ COL1=20
 COL2=40
 HL="\033[1m"
 NORM="\033[0m"
+OS_RELEASE=$(lsb_release -d | sed "s/^[^ ]*:[ \t]*//")
+printf "${HL}%-${COL1}s${NORM}%${COL2}s\n" "OS:" "$OS_RELEASE"
 nets="${HL}Networks:${NORM}\n";
 nets=$nets$(printf "%$(( ${COL1}+${COL2} ))s\n" $(ip a sh | grep -vE "127\.|::1/128" | grep inet | sed "s/^.*inet[^ ]*[ ]//;s/[ ].*$//"))
 echo "$nets"&;
