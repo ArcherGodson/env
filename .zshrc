@@ -52,6 +52,9 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias ccze='ccze -m ansi'
 alias google='~/tools/google.sh'
+alias ai='~/tools/gigachat.sh'
+alias ai_balance='~/tools/gigachat-tokens.sh'
+alias ии=ai
 alias id_system='echo "System identification"; (
 COL1=20
 COL2=40
