@@ -1,9 +1,10 @@
 #!/bin/bash
-LEN=8
-for i in $(seq 1 $2); do
-    if [[ ! -z "$1" ]]; then
-        LEN=$1
-    fi
+LEN=16
+if [[ ! -z "$1" ]]; then
+    LEN=$1
+    shift 1
+fi
+for i in $(seq 1 $1); do
     case $LEN in
         ''|*[!0-9]*) echo Number needed;;
         *) 
