@@ -14,7 +14,7 @@ compinit -i
 autoload -U promptinit
 promptinit
 PROMPT=$' %{\e[1;34m%}%~ %{\e[1;31m%}%#%{\e[0m%} '
-RPROMPT=$'%{\e[1;30;47m%} %* %{\e[0m%}'
+RPROMPT=$'%{\e[1;40;33m%} %M %{\e[0m%}%{\e[1;30;47m%} %* %{\e[0m%}'
 
 precmd()
 {
