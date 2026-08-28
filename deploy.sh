@@ -10,12 +10,14 @@ do
   fi
 done
 
+echo "Required packages:$REQUIRED_PKG"
 if [ -n "$REQUIRED_PKG" ]; then
     SUDO_CMD=""
     if [ "$EUID" -ne 0 ] && command -v sudo &> /dev/null; then
         SUDO_CMD="sudo"
     fi
 
+    # Проверяем, есть ли пакетные менеджеры
     if command -v apt-get &> /dev/null; then
         $SUDO_CMD apt-get update -qq
         $SUDO_CMD apt-get install -y $REQUIRED_PKG
@@ -23,10 +25,17 @@ if [ -n "$REQUIRED_PKG" ]; then
         $SUDO_CMD dnf install -y $REQUIRED_PKG
     elif command -v yum &> /dev/null; then
         $SUDO_CMD yum install -y $REQUIRED_PKG
+    elif command -v apk &> /dev/null; then
+        # Alpine Linux
+        $SUDO_CMD apk add $REQUIRED_PKG
+    elif command -v pacman &> /dev/null; then
+        # Arch Linux
+        $SUDO_CMD pacman -S --noconfirm $REQUIRED_PKG
     else
-        echo "[!] Package manager not found (apt/dnf/yum)"
+        echo "[!] Package manager not found (apt/dnf/yum/apk/pacman)"
+        echo "[!] Trying to continue without installing packages"
         echo "[!] Please install these packages manually:$REQUIRED_PKG"
-        exit 1
+        echo "[!] Note: In Docker containers, packages should already be installed or handled by the base image."
     fi
 fi
 
