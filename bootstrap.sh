@@ -7,19 +7,14 @@ REPO_NAME="env-master"
 URL="https://github.com/ArcherGodson/env/archive/refs/heads/master.zip"
 
 REQUIRED_PKG=""
-if ! command -v unzip &> /dev/null; then
-    echo "[-] Утилита 'unzip' не найдена."
-    REQUIRED_PKG="$REQUIRED_PKG unzip"
-fi
-
-if ! command -v rsync &> /dev/null; then
-    echo "[-] Утилита 'rsync' не найдена."
-    REQUIRED_PKG="$REQUIRED_PKG rsync"
-fi
+for pkg in "unzip rsync"
+do
+  if ! command -v $pkg &> /dev/null; then
+    REQUIRED_PKG="$REQUIRED_PKG $pkg"
+  fi
+done
 
 if [ -n "$REQUIRED_PKG" ]; then
-    echo "[*] Пытаемся автоматически установить отсутствующие пакеты:$REQUIRED_PKG..."
-    
     SUDO_CMD=""
     if [ "$EUID" -ne 0 ] && command -v sudo &> /dev/null; then
         SUDO_CMD="sudo"
@@ -33,8 +28,8 @@ if [ -n "$REQUIRED_PKG" ]; then
     elif command -v yum &> /dev/null; then
         $SUDO_CMD yum install -y $REQUIRED_PKG
     else
-        echo "[!] Package manager not found (apt/dnf/yum)."
-        echo "[!] Install packages manualy:$REQUIRED_PKG"
+        echo "[!] Package manager not found (apt/dnf/yum)"
+        echo "[!] Please install these packages manually:$REQUIRED_PKG"
         exit 1
     fi
 fi
