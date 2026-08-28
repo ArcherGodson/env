@@ -3,7 +3,7 @@ REPO="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/"
 HOME="$(eval echo ~$USER)/"
 
 REQUIRED_PKG=""
-for pkg in "rsync zsh htop tmux mc"
+for pkg in rsync zsh htop tmux mc
 do
   if ! command -v $pkg &> /dev/null; then
     REQUIRED_PKG="$REQUIRED_PKG $pkg"

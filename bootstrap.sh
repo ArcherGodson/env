@@ -7,7 +7,7 @@ REPO_NAME="env-master"
 URL="https://github.com/ArcherGodson/env/archive/refs/heads/master.zip"
 
 REQUIRED_PKG=""
-for pkg in "unzip rsync"
+for pkg in unzip rsync
 do
   if ! command -v $pkg &> /dev/null; then
     REQUIRED_PKG="$REQUIRED_PKG $pkg"
