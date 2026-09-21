@@ -13,8 +13,8 @@ compinit -i
 
 autoload -U promptinit
 promptinit
-PROMPT=$' %{\e[1;34m%}%~ %{\e[1;31m%}%#%{\e[0m%} '
-RPROMPT=$'%{\e[1;40;33m%} %M %{\e[0m%}%{\e[1;30;47m%} %* %{\e[0m%}'
+#PROMPT=$' %{\e[1;34m%}%~ %{\e[1;31m%}%#%{\e[0m%} '
+#RPROMPT=$'%{\e[1;40;33m%} %M %{\e[0m%}%{\e[1;30;47m%} %* %{\e[0m%}'
 
 precmd()
 {
@@ -55,6 +55,12 @@ alias google='~/tools/google.sh'
 alias ai='~/tools/gigachat.sh'
 alias ai_balance='~/tools/gigachat-tokens.sh'
 alias ии=ai
+alias mini="PROMPT=$' %{\e[1m%}>%{\e[0m%} '; RPROMPT=''"
+alias maxi="PROMPT=$' %{\e[1;34m%}%~ %{\e[1;31m%}%#%{\e[0m%} ' RPROMPT=$'%{\e[1;40;33m%} %M %{\e[0m%}%{\e[1;30;47m%} %* %{\e[0m%}'"
+alias minimal=mini
+alias zshmini=mini
+alias maximal=maxi
+alias zshmaxi=maxi
 alias id_system='echo "System identification"; (
 COL1=20
 COL2=40
@@ -100,3 +106,14 @@ bindkey "^[[B" down-line-or-search ## down arrow for fwd-history-search
 bindkey " " magic-space ## do history expansion on space
 ;;
 esac
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+# Added by Devin
+export PATH="/Users/ag/.codeium/windsurf/bin:$PATH"
+mini
