@@ -8,6 +8,10 @@ bindkey -e
 zstyle :compinstall filename '~/.zshrc'
 zstyle ':completion:*' rehash true
 
+
+# Включаем выполнение функций внутри промпта
+setopt prompt_subst
+
 autoload -Uz compinit
 compinit -i
 
@@ -55,7 +59,7 @@ alias google='~/tools/google.sh'
 alias ai='~/tools/gigachat.sh'
 alias ai_balance='~/tools/gigachat-tokens.sh'
 alias ии=ai
-alias mini="PROMPT=$' %{\e[1m%}>%{\e[0m%} '; RPROMPT=''"
+alias mini="PROMPT=$' %1~ %{\e[1m%}>%{\e[0m%} '; RPROMPT=''"
 alias maxi="PROMPT=$' %{\e[1;34m%}%~ %{\e[1;31m%}%#%{\e[0m%} ' RPROMPT=$'%{\e[1;40;33m%} %M %{\e[0m%}%{\e[1;30;47m%} %* %{\e[0m%}'"
 alias minimal=mini
 alias zshmini=mini
